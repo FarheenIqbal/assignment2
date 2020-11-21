@@ -1,35 +1,17 @@
-function zip(...arr) {
-  let result = []
-  if (!arr) return []
-  let colsize = maxColSize(arr)
-  for (let i = 0; i < colsize; i++) {
-    let x = getColumn(arr, i)
-    result.push(x)
-  }
-  return result
-}
-
-function getColumn(arr, col) {
-  let x = []
+function groupBy(arr, func) {
+  let obj = {}
+  if (!arr || !func) return obj
+  let x
   for (let i = 0; i < arr.length; i++) {
-    x.push(arr[i][col])
-  }
-  return x
-}
-
-function maxColSize(arr) {
-  let max = arr[0].length
-  for (let j = 0; j < arr.length; j++) {
-    if (max < arr[j].length) {
-      max = arr[j].length
+    x = func(arr[i])
+    if (obj[x] === undefined) {
+      obj[x] = [arr[i]]
+    } else {
+      obj[x].push(arr[i])
     }
   }
-  return max
+  return obj
 }
 
-console.log(zip(['a', 'b'], [1, 2], [true, false]))
-console.log(zip(['a'], [1, 2], [true, false]))
-
-// output
-//[ [ 'a', 1, true ], [ 'b', 2, false ] ]
-//[ [ 'a', 1, true ], [ undefined, 2, false ] ]
+console.log(groupBy([6.1, 4.2, 6.3], Math.floor))
+//console.log(groupBy(['one', 'two', 'three'], 'length')) ??

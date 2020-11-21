@@ -17,6 +17,6 @@ const data = {
   },
 }
 
-console.log(deepGet(data, ['foo', 'foz', index]))
-console.log(deepGet(data, ['foo', 'bar', 'baz', 1]))
-console.log(deepGet(data, ['foo', 'bar', 'baz', 8, 'foz']))
+console.log(deepGet(data, ['foo', 'foz', index])) //3
+console.log(deepGet(data, ['foo', 'bar', 'baz', 1])) //b
+console.log(deepGet(data, ['foo', 'bar', 'baz', 8, 'foz'])) //null
